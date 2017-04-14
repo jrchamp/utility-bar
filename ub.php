@@ -10,16 +10,19 @@ var _ub = _ub || {};
 	_ub.color = '<?php echo urlencode($_GET['color']); ?>';
 <?php endif; ?>
 
-<?php if( !empty($_GET['maxWidth']) ): ?>
-	_ub.maxWidth = '<?php echo urlencode($_GET['maxWidth']); ?>';
+<?php if(isset($_GET['maxWidth'])): ?>
+<?php	$_GET['maxWidth'] = intval($_GET['maxWidth']); ?>
+<?php if(!empty($_GET['maxWidth'])): ?>
+	_ub.maxWidth = '<?php echo $_GET['maxWidth']; ?>';
+<?php endif; ?>
 <?php endif; ?>
 
 <?php if( !empty($_GET['placeholder']) ): ?>
   _ub.placeholder = '<?php echo rawurlencode($_GET['placeholder']); ?>';
 <?php endif; ?>
 
-<?php if( !empty($_GET['showBrick']) ): ?>
-  _ub.showBrick = '<?php echo rawurlencode($_GET['showBrick']); ?>';
+<?php if(isset($_GET['showBrick'])): ?>
+	_ub.showBrick = '<?php echo ($_GET['showBrick'] === '1' ? '1' : '0'); ?>';
 <?php endif; ?>
 
 (function(){
